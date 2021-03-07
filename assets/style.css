@@ -4,10 +4,12 @@ body {
     line-height: 1;
   }
   
-  textarea{
+  .textarea {
     background: transparent;
+    min-width: 80%;
     border: none;
     resize: none;
+    margin: 0px 10px 0px 10px;
     color: #000000;
     border-left: 1px solid black;
     padding: 10px;
@@ -26,6 +28,8 @@ body {
   }
   
   .time-block{
+    display: flex;
+    justify-content: space-around;
     text-align: center;
     border-radius: 15px;
   }

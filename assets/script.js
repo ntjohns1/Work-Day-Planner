@@ -16,7 +16,7 @@ setInterval(function () {
 THEN I am presented with timeblocks for standard business hours*/
 // create an array with the times
 function renderBlocks(){
-var times = [
+  var times = [
     "9:00am",
     "10:00am",
     "11:00am",
@@ -31,25 +31,27 @@ var times = [
 ]
 // for loop that cycles through the times and creates and attaches an element
 for (var i = 0; i < times.length; i++) {
-var timeList = $("<ul>");
-var hourBlock = $("<li>");
-var eventText = $("<textarea>")
-var saveBtn = $("<button>")
+  var timeList = $("<ul>");
+  var hourBlock = $("<li>");
+  var eventText = $("<textarea>")
+  var saveBtn = $("<button>")
 // classes for <ul>/<li> are from bootstrap; experiment with bootstrap for other elements
-timeList.addClass("list-group");
-containerDiv.append(timeList);
+  timeList.addClass("list-group");
+  containerDiv.append(timeList);
 // may need to add a class to style hourBlock.text once we style the other elements
-// may need to assign hourBlock.text a variable so we can use it in conditional statements in next step
-var lineTitle = hourBlock.text(times[i]);
-hourBlock.addClass("list-group-item");
+// figure out how to get this value and pass it into logic on line 64+
+  hourBlock.text(times[i]);
+  hourBlock.attr("class", "time-block")
+  hourBlock.addClass("list-group-item");
 // hourBlock.attribute("class",)
 // ToDo assign styles to text areas and save buttons
-timeList.append(hourBlock);
-hourBlock.append(eventText);
-saveBtn.text("Save")
-hourBlock.append(saveBtn);
-console.log(lineTitle);
-}
+  timeList.append(hourBlock);
+  eventText.attr("class", "textarea")
+  hourBlock.append(eventText);
+  saveBtn.attr("class", "saveBtn");
+  saveBtn.text("Save");
+  hourBlock.append(saveBtn);
+  }
 }
 renderBlocks(); 
 
@@ -58,12 +60,13 @@ renderBlocks();
 /*WHEN I view the timeblocks for that day
 THEN each timeblock is color coded to indicate whether it is in the past, present, or future*/
 // set attributes with conditional statements
-// use timeCheck variable to compare value in lineTitle variable
-var timeCheck = currentTime.format("X");
+// use timeCheck variable to compare value in lineTitle variable, can we use .isBefore, .isAfter, etc.?
+var timeCheck = moment().format("h");
 console.log(timeCheck);
 
-
-
+// if timeCheck is > time listed in hourBlock, attr("class", "past")
+// if timeCheck is < time listed in hourBlock, attr("class", "future")
+// if timeCheck is === then attr("class", "present")
 
 /*WHEN I click into a timeblock
 THEN I can enter an event*/
