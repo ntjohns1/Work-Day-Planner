@@ -3,7 +3,7 @@ WHEN I open the planner
 THEN the current day is displayed at the top of the calendar*/
 
 var containerDiv = $("#main-container")
-var saveClick = console.log($("button"));
+
 // declare variable for moment js. and write it to #currentDay
 // use set interval method to dynamically update time every second
 setInterval(function () {
@@ -53,6 +53,7 @@ function renderBlocks() {
         eventText.attr("id", times[i] - 8);
         // add something here to uniquely identify this one
         hourBlock.append(eventText);
+        saveBtn.attr("id",times[i] - 8 + "btn");
         saveBtn.attr("class", "saveBtn");
         saveBtn.text("Save");
         hourBlock.append(saveBtn);
@@ -72,26 +73,68 @@ function renderBlocks() {
 
         if (timeCheck === (times[i])) {
             hourBlock.attr("class", "present");
-        }
-        saveBtn.on('click', function(event) {
-            event.preventDefault();
-            var line1 = $("#1")
-            var line2 = $("#2")
-            var line3 = $("#3")
-            var line4 = $("#4")
-            var line5 = $("#5")
-            var line6 = $("#6")
-            var line7 = $("#7")
-            var line8 = $("#8")
-            var line9 = $("#9")
-
-            console.log(line1.val());
-            localStorage.setItem("event", line1.val());
-            
-        });
+        }    
     }
+var txt1 = $("#1");
+var txt2 = $("#2");
+var txt3 = $("#3");
+var txt4 = $("#4");
+var txt5 = $("#5");
+var txt6 = $("#6");
+var txt7 = $("#7");
+var txt8 = $("#8");
+var txt9 = $("#9");
+var btn1 = $("#1btn");
+var btn2 = $("#2btn"); 
+var btn3 = $("#3btn");
+var btn4 = $("#4btn");
+var btn5 = $("#5btn");
+var btn6 = $("#6btn");
+var btn7 = $("#7btn");
+var btn8 = $("#8btn");
+var btn9 = $("#9btn");
+
+btn1.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt1.val());
+});
+btn2.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt2.val());
+});
+btn3.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt3.val());
+});
+btn4.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt4.val());
+});
+btn5.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt5.val());
+});
+btn6.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt6.val());
+});
+btn7.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt7.val());
+});
+btn8.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt8.val());
+});
+btn9.on('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem("event", txt9.val());
+});
 } 
 renderBlocks();
+
+   
+    
 
     // Prevent the default behavior
     
