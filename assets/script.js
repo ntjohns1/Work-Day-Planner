@@ -1,18 +1,13 @@
 /*GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar*/
-
 var containerDiv = $("#main-container")
-
 // declare variable for moment js. and write it to #currentDay
 // use set interval method to dynamically update time every second
 setInterval(function () {
     var currentTime = moment();
     $("#currentDay").text(currentTime.format("h:mm:ss a MMM Do, YYYY"));
 }, 1000);
-
-
-
 /*WHEN I scroll down
 THEN I am presented with timeblocks for standard business hours*/
 // create an array with the times
@@ -34,15 +29,13 @@ function renderBlocks() {
     // for loop that cycles through the times and creates and attaches an element
     for (var i = 0; i < times.length; i++) {
         var hourBlock = $("<li>");
-        var eventText = $("<input>")
+        var eventText = $("<textarea>")
         var saveBtn = $("<button>")
         // classes for <ul>/<li> are from bootstrap; experiment with bootstrap for other elements
         timeList.addClass("list-group");
         containerDiv.append(timeList);
         // may need to add a class to style hourBlock.text once we style the other elements
-        // figure out how to get this value and pass it into logic on line 64+
-        // 
-        var timeDisplay = hourBlock.text(times[i] > 12 ? `${times[i] - 12}:00` : `${times[i]}:00`);
+        hourBlock.text(times[i] > 12 ? `${times[i] - 12}:00` : `${times[i]}:00`);
         hourBlock.attr("class", "time-block");
         hourBlock.addClass("list-group-item");
         timeList.append(hourBlock);
@@ -53,7 +46,7 @@ function renderBlocks() {
         eventText.attr("id", times[i] - 8);
         // add something here to uniquely identify this one
         hourBlock.append(eventText);
-        saveBtn.attr("id",times[i] - 8 + "btn");
+        saveBtn.attr("id", times[i] - 8 + "btn");
         saveBtn.attr("class", "saveBtn");
         saveBtn.text("Save");
         hourBlock.append(saveBtn);
@@ -73,74 +66,104 @@ function renderBlocks() {
 
         if (timeCheck === (times[i])) {
             hourBlock.attr("class", "present");
-        }    
+        }
     }
-var txt1 = $("#1");
-var txt2 = $("#2");
-var txt3 = $("#3");
-var txt4 = $("#4");
-var txt5 = $("#5");
-var txt6 = $("#6");
-var txt7 = $("#7");
-var txt8 = $("#8");
-var txt9 = $("#9");
-var btn1 = $("#1btn");
-var btn2 = $("#2btn"); 
-var btn3 = $("#3btn");
-var btn4 = $("#4btn");
-var btn5 = $("#5btn");
-var btn6 = $("#6btn");
-var btn7 = $("#7btn");
-var btn8 = $("#8btn");
-var btn9 = $("#9btn");
-
-btn1.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt1.val());
-});
-btn2.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt2.val());
-});
-btn3.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt3.val());
-});
-btn4.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt4.val());
-});
-btn5.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt5.val());
-});
-btn6.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt6.val());
-});
-btn7.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt7.val());
-});
-btn8.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt8.val());
-});
-btn9.on('click', function(event) {
-    event.preventDefault();
-    localStorage.setItem("event", txt9.val());
-});
-} 
+    /*WHEN I click the save button for that timeblock
+    THEN the text for that event is saved in local storage*/
+    // select the button and input elements we just created by id
+    var txt1 = $("#1");
+    var txt2 = $("#2");
+    var txt3 = $("#3");
+    var txt4 = $("#4");
+    var txt5 = $("#5");
+    var txt6 = $("#6");
+    var txt7 = $("#7");
+    var txt8 = $("#8");
+    var txt9 = $("#9");
+    var txt10 = $("#10");
+    var txt11 = $("#11")
+    var btn1 = $("#1btn");
+    var btn2 = $("#2btn");
+    var btn3 = $("#3btn");
+    var btn4 = $("#4btn");
+    var btn5 = $("#5btn");
+    var btn6 = $("#6btn");
+    var btn7 = $("#7btn");
+    var btn8 = $("#8btn");
+    var btn9 = $("#9btn");
+    var btn10 = $("#10btn");
+    var btn11 = $("#11btn");
+    btn1.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("9:00", txt1.val());
+    });
+    btn2.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("10:00", txt2.val());
+    });
+    btn3.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("11:00", txt3.val());
+    });
+    btn4.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("12:00", txt4.val());
+    });
+    btn5.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("1:00", txt5.val());
+    });
+    btn6.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("2:00", txt6.val());
+    });
+    btn7.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("3:00", txt7.val());
+    });
+    btn8.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("4:00", txt8.val());
+    });
+    btn9.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("5:00", txt9.val());
+    });
+    btn10.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("6:00", txt10.val());
+    });
+    btn11.on('click', function (event) {
+        event.preventDefault();
+        localStorage.setItem("7:00", txt11.val());
+    });
+    /*WHEN I refresh the page
+    THEN the saved events persist*/
+    var saveTxt1 = localStorage.getItem("9:00");
+    var saveTxt2 = localStorage.getItem("10:00");
+    var saveTxt3 = localStorage.getItem("11:00");
+    var saveTxt4 = localStorage.getItem("12:00");
+    var saveTxt5 = localStorage.getItem("1:00");
+    var saveTxt6 = localStorage.getItem("2:00");
+    var saveTxt7 = localStorage.getItem("3:00");
+    var saveTxt8 = localStorage.getItem("4:00");
+    var saveTxt9 = localStorage.getItem("5:00");
+    var saveTxt10 = localStorage.getItem("6:00");
+    var saveTxt11 = localStorage.getItem("7:00");
+    txt1.text(saveTxt1);
+    txt2.text(saveTxt2);
+    txt3.text(saveTxt3);
+    txt4.text(saveTxt4);
+    txt5.text(saveTxt5);
+    txt6.text(saveTxt6);
+    txt7.text(saveTxt7);
+    txt8.text(saveTxt8);
+    txt9.text(saveTxt9);
+    txt10.text(saveTxt10);
+    txt11.text(saveTxt11);
+}
 renderBlocks();
 
-   
-    
-
-    // Prevent the default behavior
-    
-    // get the text area that is associated with with this save button
-    // get the value in it
-    // do the save
 
 
 
@@ -149,14 +172,11 @@ renderBlocks();
 
 
 
-/*WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage*/
-// we need an event listener for saveBtn
-// review using target.event to grab the user input from eventText, there is probably a jQuery shortcut
-// We are going to pass a that into a function to send the user input text to local storage
 
 
-/*WHEN I refresh the page
-THEN the saved events persist*/
-// use the get local storage method to place the text content
-// probably need to use JSON stringify
+
+
+
+
+
+
