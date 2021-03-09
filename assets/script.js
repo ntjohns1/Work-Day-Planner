@@ -29,14 +29,11 @@ function renderBlocks() {
     // for loop that cycles through the times and creates and attaches an element
     for (var i = 0; i < times.length; i++) {
         var hourBlock = $("<li>");
-        var eventText = $("<textarea>")
-        var saveBtn = $("<button>")
-        // classes for <ul>/<li> are from bootstrap; experiment with bootstrap for other elements
-        timeList.addClass("list-group");
+        var eventText = $("<textarea>");
+        var saveBtn = $("<button>");
         containerDiv.append(timeList);
-        // may need to add a class to style hourBlock.text once we style the other elements
         hourBlock.text(times[i] > 12 ? `${times[i] - 12}:00` : `${times[i]}:00`);
-        hourBlock.attr("class", "time-block");
+        hourBlock.attr("class", "time-block",);
         hourBlock.addClass("list-group-item");
         timeList.append(hourBlock);
         // WHEN I click into a timeblock, THEN I can enter an event
